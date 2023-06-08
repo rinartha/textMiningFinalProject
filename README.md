@@ -1,6 +1,8 @@
 # textMiningFinalProject
 
-some file cannot be store in this repository
+Tommy (text to predict and summary) AI
+
+Some files cannot be stored in this repository
 1. cnn dataset (that can be found in https://www.kaggle.com/datasets/hadasu92/cnn-articles-after-basic-cleaning)
 2. roberta pretrained model (you can use google colab file to create one of pretrained model and remember to use gpu environment)
 3. virtual environment that I use in this project
@@ -12,7 +14,7 @@ This code consist of several parts/folder
 4. static : website asset that I use in this project
 5. template : html file
 
-files
+Files
 1. __init__.py
 2. bot.py : class for AI bot 
 3. customBert.py : class for training roberta base or bert base
