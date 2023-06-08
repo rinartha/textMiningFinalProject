@@ -1,0 +1,27 @@
+.wph-avatar-wrapper{
+    position:fixed;
+    width:150px;
+    right:25px;
+    bottom:250px;
+    z-index:9999;}
+.wph-avatar-image img{
+    position:absolute!important;
+}
+.wph-avatar-wrapper-reader{
+    right:150px;
+    position:absolute;
+    width:200px;
+}
+@media all and (max-width:768px){
+    .wph-avatar-wrapper{
+        width:80px!important;
+        bottom:140px!important;
+    }
+    .wph-avatar-wrapper img{
+        width:80px!important;
+        height:auto!important;
+    }
+    .wph-avatar-wrapper-reader{
+        right:80px;
+    }
+}

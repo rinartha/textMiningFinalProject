@@ -1,0 +1,61 @@
+fine tuned (scraped data from taiwannews.com.tw)
+
+label distribution
+Politics    438
+Society     261
+Business    128
+
+Here is the classification report:
+              precision    recall  f1-score   support
+
+           0       0.90      0.99      0.94        88
+           1       0.88      0.88      0.88        52
+           2       0.94      0.62      0.74        26
+
+    accuracy                           0.90       166
+   macro avg       0.91      0.83      0.86       166
+weighted avg       0.90      0.90      0.89       166
+
+fine tuned (cnn news dataset)
+
+label distribution
+news             18077
+sport            15542
+politics          2461
+business           854
+health             557
+entertainment      413
+
+Here is the classification report:
+              precision    recall  f1-score   support
+
+           0       0.97      0.93      0.95      3616
+           1       0.96      0.99      0.98      3108
+           2       0.85      0.91      0.88       492
+           3       0.85      0.90      0.87       171
+           4       0.82      0.54      0.65       111
+           5       0.62      0.84      0.72        83
+
+    accuracy                           0.95      7581
+   macro avg       0.85      0.85      0.84      7581
+weighted avg       0.95      0.95      0.95      7581
+
+
+double fine tuned cnn + taiwannews
+
+label distribution
+Politics    438
+Society     261
+Business    128
+
+Here is the classification report:
+              precision    recall  f1-score   support
+
+           0       0.91      0.98      0.95        88
+           1       0.93      0.75      0.83        52
+           2       0.80      0.92      0.86        26
+
+    accuracy                           0.90       166
+   macro avg       0.88      0.88      0.88       166
+weighted avg       0.90      0.90      0.90       166
+
