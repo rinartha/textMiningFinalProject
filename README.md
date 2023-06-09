@@ -1,6 +1,8 @@
 # textMiningFinalProject
 
-Tommy (text to predict and summary) AI
+Tommy CAI
+(Text tO predict and suMMarY Conversational Artificial Intelligence)
+News Classification and Prediction Using Double Pre-trained Roberta Model With Text-to-speech Feature
 
 Some files cannot be stored in this repository
 1. cnn dataset (that can be found in https://www.kaggle.com/datasets/hadasu92/cnn-articles-after-basic-cleaning)
