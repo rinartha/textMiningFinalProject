@@ -1,7 +1,7 @@
 # textMiningFinalProject
 
 Tommy CAI
-(Text tO predict and suMMarY Conversational Artificial Intelligence)
+(Text tO predict and suMMarY Conversational Artificial Intelligence)
 News Classification and Prediction Using Double Pre-trained Roberta Model With Text-to-speech Feature
 
 Some files cannot be stored in this repository
