@@ -29,24 +29,22 @@ class ChatBot():
     def get_respond(self, text):
         prediction = 'none'
         if self.name in text.lower():
-            respond = "Hello I am "+self.name+" the AI (text to predict and summary). \
-            This is my ability (get Time, get the Weather Today, do news Prediction, read \
-            latest News from Taiwan, and read latest News from Taipei). What can I do for you?"
+            respond = "Hello I am "+self.name+" the AI (text to predict and summary). Instruction for me."
         
-        elif "time" in text:
+        elif "time" in text.lower():
             respond = datetime.datetime.now().time().strftime('%H:%M')
 
-        elif "instruction" in text:
-            respond = "Time, Weather today, Prediction, News from taiwan, News from taipei"
+        elif "instruction" in text.lower():
+            respond = "Time, Weather today, Prediction, News from Taiwan, News from Taipei"
 
-        elif ("weather" in text) or ("weather" in text and "today" in text):
+        elif ("weather" in text.lower()) or ("weather" in text.lower() and "today" in text.lower()):
             respond = self.weatherToday.weather_today()
             
-        elif "prediction" in text:
+        elif "prediction" in text.lower():
             respond = "Please paste your text in the textarea, and say ready"
             prediction = 'display'
 
-        elif "news" in text and "taiwan" in text:
+        elif "news" in text.lower() and "taiwan" in text.lower():
             dictLabel = {"Politics": 0, "Society": 1, "Business": 2}
             website = getNews()
             textContent = website.findTaiwanNews()
@@ -70,7 +68,7 @@ class ChatBot():
             respond = "News from taipei times is belongs to " + str(predict) + " topic, and the summary of this news is " + str(summary)
             prediction = textContent
             
-        elif any(i in text for i in ["thank","thanks"]):
+        elif any(i in text.lower() for i in ["thank","thanks"]):
             respond = np.random.choice(["You're welcome!","No problem!","Cool!","I'm here if you need me!","Peace out!"])
 
         else:

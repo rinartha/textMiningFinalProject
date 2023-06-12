@@ -40,7 +40,7 @@ class weather():
         # print("Temperature is", temp)
         # print("Time: ", translate_text(time))
         # print("Sky Description: ", translate_text(sky))
-        return "I feel the temperature in " + city_name + " is " + temp + " and the sky is " + self.translate_text(sky)
+        return "I feel the temperature in " + city_name + " is " + self.translate_text(temp) + " and the sky is " + self.translate_text(sky)
 
 
 # def main():
