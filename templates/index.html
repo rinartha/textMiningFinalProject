@@ -48,16 +48,6 @@
     </div>
 
     <div class="row mx-md-1 my-3">
-        <div class="col-sm-4 d-none">
-            <div class="card">
-                <div class="card-header">
-                Chat
-                </div>
-                <div class="card-body">
-                    <textarea class="col-sm-12" id="text" name="text" readonly></textarea>
-                </div>
-            </div>
-        </div>
         <div id="textPrediction" class="col-sm-12 d-none">
             <div class="card">
                 <div class="card-header">
@@ -75,6 +65,16 @@
                 </div>
                 <div class="card-body">
                     <textarea class="col-sm-12" id="lastNewsText" rows="15" name="text"></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="card">
+                <div class="card-header">
+                Chat
+                </div>
+                <div class="card-body">
+                    <textarea class="col-sm-12" id="text" name="text" onkeydown="javascript: if(event.keyCode == 13) readCommand()"></textarea>
                 </div>
             </div>
         </div>
@@ -232,6 +232,64 @@
             recognition.start();
         })
 
+        function readCommand()
+        {
+            let transcript = document.getElementById("text").value;
+            transcript = transcript.toLowerCase();
+            if (transcript.indexOf('news') > -1 && (transcript.indexOf('taiwan')>-1 || transcript.indexOf('taipei')>-1))
+            {
+                readOut("wait a moment");
+                document.getElementById("aiAnswer").innerHTML = "wait a moment";
+            }
+            // document.getElementById("text").value = transcript;
+            var textValue = document.getElementById("textNews").value;
+            var req = new XMLHttpRequest();
+            req.onreadystatechange = function()
+            {
+                if(this.readyState == 4 && this.status == 200) {
+                    result = this.responseText.split("::");
+                    // console.log(result[0]);
+                    recognition.abort();
+                    document.getElementById("aiAnswer").innerHTML = result[0];
+                    readOut(result[0]);
+                    if (result[1] == 'display')
+                    {
+                        document.getElementById("textPrediction").classList.remove("d-none");
+                        if (!document.getElementById("lastNews").classList.contains("d-none"))
+                        {
+                            document.getElementById("lastNews").classList.add("d-none");
+                        }
+                    }
+                    else if (result[1] == 'none')
+                    {
+                        if (!document.getElementById("textPrediction").classList.contains("d-none"))
+                        {
+                            document.getElementById("textPrediction").classList.add("d-none");
+                            document.getElementById("textNews").value = "";
+                        }   
+                        if (!document.getElementById("lastNews").classList.contains("d-none"))
+                        {
+                            document.getElementById("lastNews").classList.add("d-none");
+                        }
+                    }
+                    else
+                    {
+                        document.getElementById("lastNews").classList.remove("d-none");
+                        document.getElementById("lastNewsText").value = result[1];
+                        if (!document.getElementById("textPrediction").classList.contains("d-none"))
+                        {
+                            document.getElementById("textPrediction").classList.add("d-none");
+                            document.getElementById("textNews").value = "";
+                        }     
+                    }
+                }
+            }
+            document.getElementById("text").value = '';
+            req.open('POST', '/index', true);  
+            req.setRequestHeader('content-type', 'application/x-www-form-urlencoded;charset=UTF-8');
+            req.send("text="+transcript+"&textPrediction="+textValue);
+            // console.log(transcript);
+        }
         
     </script>
     <script type='text/javascript' src='static/js/bootstrap.min.js'></script>
